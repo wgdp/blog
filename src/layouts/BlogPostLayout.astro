@@ -12,14 +12,14 @@ const { frontmatter } = Astro.props;
 ---
 
 <html>
-    <body class="antialiased bg-white text-nord-0">
-        <div>
+    <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
+        <main class="flex-grow">
             <div class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50">
                 <div class="mx-auto w-full px-3 xs:px-4 sm:px-5 max-w-screen-md">
                     <div class="py-4 border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
                         <div class="relative flex items-center">
-                            <a href="/">
-                                <img class="object-contain h-10 w-10" src="https://pbs.twimg.com/profile_images/1453387376550580224/EmkS3YYf_400x400.png" />
+                            <a href="/" class="flex items-center">
+                                <span class="ms-2 text-nord-3 text-xl font-bold">息絶えた雑記</span>
                             </a>
                             <div class="relative hidden lg:flex items-center ml-auto">
                                 <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
@@ -51,7 +51,7 @@ const { frontmatter } = Astro.props;
                 </div>
                 <div class="
                     mt-16 flex flex-col gap-7 tracking-wide
-                    prose-p:text-nord-3 prose-p:leading-relaxed sm:prose-p:text-mdlg prose-p:text-lg
+                    prose-p:text-nord-1 prose-p:leading-relaxed sm:prose-p:text-mdlg prose-p:text-lg
                     prose-h1:font-bold prose-h1:text-4xl
                     prose-h2:font-bold prose-h2:text-3xl
                     prose-h3:font-normal prose-h3:text-3xl
@@ -64,11 +64,32 @@ const { frontmatter } = Astro.props;
                     prose-ol:list-decimal
                     prose-ul:list-disc
                     prose-li:text-nord-3 prose-li:leading-relaxed prose-li:sm:text-mdlg prose-li:text-lg prose-li:ms-5
-                    prose-table:text-nord-3 prose-table:text-lg
+                    prose-table:text-nord-3 prose-table:text-lg prose-table:table-auto prose-table:border prose-table:border-collapse prose-table:rounded-lg
+                    prose-table:overflow-hidden prose-table:rounded-xl
+                    prose-th:border-b prose-th:bg-nord-4 prose-th:py-2 prose-th:px-4 prose-th:border-nord-3
+                    prose-td:bg-nord-6 prose-td:py-2 prose-td:px-4 prose-td:border-b prose-td:border-nord-4
+                    prose-hr:border-nord-4
                     ">
                     <slot />
                 </div>
             </div>
-        </div>
+        </main>
+        <footer class="bg-nord-6 mt-40">
+            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center text-nord-3">© 2024 wgdp
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">GitHub</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">Twitter</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">BlueSky</a>
+                </li>
+            </ul>
+            </div>
+        </footer>
     </body>
 </html>
