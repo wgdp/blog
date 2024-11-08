@@ -1,11 +1,9 @@
 ---
-interface Frontmatter {
-    title: string
-    emoji: string
-    pubDate: Date
-    description: string
-    tags: string[]
-}
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import type { Frontmatter } from '../types/Frontmatter';
+import { getImageOrDefault } from '../util/image';
+
 const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md');
 ---
 
@@ -17,32 +15,7 @@ const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md');
 		<title>息絶えた雑記</title>
 	</head>
     <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
-        <div class="sticky top-0 z-40 w-full backdrop-blur flex-none transition-colors duration-500 lg:z-50">
-            <div class="mx-auto w-full px-3 xs:px-4 sm:px-5 max-w-screen-md">
-                <div class="py-4 border-slate-900/10 lg:px-8 lg:border-0 mx-4 lg:mx-0">
-                    <div class="relative flex items-center">
-                        <a href="/" class="flex items-center">
-                            <span class="ms-2 text-nord-3 text-xl font-bold">息絶えた雑記</span>
-                        </a>
-                        <div class="relative hidden lg:flex items-center ml-auto">
-                            <nav class="text-sm leading-6 font-semibold text-slate-700 dark:text-slate-200">
-                                <ul class="flex space-x-8 text-lg">
-                                    <li>
-                                        <a class="hover:text-nord-7 text-nord-0" href="/about">About</a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-nord-7 text-nord-0" href="/posts">Posts</a>
-                                    </li>
-                                    <li>
-                                        <a class="hover:text-nord-7 text-nord-0" href="/showcase">Gallery</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Header />
         <main class="container mx-auto flex-grow">
             <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-lg">
                 <div class="flex justify-center my-28">
@@ -50,33 +23,19 @@ const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md');
                 </div>
                 <div class="text-xl grid grid-cols-2 my-28 leading-relaxed">
                     {allPosts.map((post) =>
-                        <a href={post.url} class="max-w px-4 py-2 m-2 bg-nord-6 rounded-xl hover:scale-[1.02] flex">
-                            <div class="text-5xl content-center me-2">{post.frontmatter.emoji}</div>
-                            <div class="flex flex-col flex-grow">
-                                <h5 class="text-xl font-bold text-nord-1 flex-grow p-2 mb-2">{post.frontmatter.title}</h5>
-                                <span class="text-sm font-semibold text-nord-3 mx-auto">{new Date(post.frontmatter.pubDate).toLocaleDateString()}</span>
+                        <a class="mx-2 rounded-xl bg-nord-6 flex flex-col" href={post.url}>
+                            <img class="rounded-t-lg" src={getImageOrDefault(post.frontmatter.thumbnail)} alt="サムネイル" />
+                            <div class="p-5 flex-grow">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-nord-0">{post.frontmatter.title}</h5>
+                            </div>
+                            <div class="pb-2 pe-3 flex justify-center">
+                                <span class="text-sm">{new Date(post.frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
                             </div>
                         </a>
                     )}
                 </div>
             </div>
         </main>
-        <footer class="bg-nord-6 mt-40">
-            <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center text-nord-3">© 2024 wgdp
-            </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">GitHub</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">Twitter</a>
-                </li>
-                <li>
-                    <a href="#" class="hover:underline me-4 md:me-6 text-nord-3">BlueSky</a>
-                </li>
-            </ul>
-            </div>
-        </footer>
+        <Footer />
 	</body>
 </html>
