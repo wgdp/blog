@@ -1,15 +1,11 @@
 ---
+import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
 <html lang="ja">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<title>息絶えた雑記</title>
-	</head>
+    <Head />
     <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
         <Header />
         <main class="container mx-auto flex-grow">
