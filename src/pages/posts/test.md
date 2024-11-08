@@ -1,10 +1,11 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: 'テスト投稿'
+title: 'テスト投稿 - 表示確認用'
 pubDate: 2024-11-04
-description: 'テスト投稿です'
+description: '表示確認用'
 tags: ["テスト", "雑記"]
 emoji: '📰'
+thumbnail: 'https://image.r2.cloudflare.wgdp.dev/default-thumbnail.jpg'
 ---
 
 ## はじめに
