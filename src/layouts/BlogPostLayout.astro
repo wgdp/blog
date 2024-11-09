@@ -10,7 +10,7 @@ const { frontmatter, url } = Astro.props;
 const ogp:Ogp = {
     title: frontmatter.title,
     description: frontmatter.description,
-    thumbnail: frontmatter.thumbnail,
+    thumbnail: getImageOrDefault(frontmatter.thumbnail),
     url: url,
     pageType: "article"
 }
