@@ -12,7 +12,7 @@ const { frontmatter, url, rawContent } = Astro.props;
 const markdownText = removeMarkdown(rawContent())
 const ogp:Ogp = {
     title: frontmatter.title,
-    description: markdownText.length <= 100 ? markdownText : markdownText.slice(0, 99),
+    description: (markdownText.length <= 100 ? markdownText : markdownText.slice(0, 99)) + '...',
     thumbnail: getImageOrDefault(frontmatter.thumbnail),
     url: url,
     pageType: "article"
