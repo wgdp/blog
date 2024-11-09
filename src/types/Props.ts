@@ -6,5 +6,5 @@ export interface Props {
     frontmatter: Frontmatter
     url: string
     ogp: Ogp
-    content: MarkdownInstance<Record<string, any>>
+    rawContent(): string
 }
