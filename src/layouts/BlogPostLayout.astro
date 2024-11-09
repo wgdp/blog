@@ -2,14 +2,22 @@
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import type { Props } from '../types/Props'
+import type { Props } from '../types/Props';
+import type { Ogp } from '../types/Ogp'
 import { getImageOrDefault } from '../util/image';
+const { frontmatter, url } = Astro.props;
 
-const { frontmatter } = Astro.props;
+const ogp:Ogp = {
+    title: frontmatter.title,
+    description: frontmatter.description,
+    thumbnail: frontmatter.thumbnail,
+    url: url,
+    pageType: "article"
+}
 ---
 
 <html lang="ja">
-    <Head />
+    <Head ogp={ogp} />
     <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
         <main class="flex-grow">
             <Header />
