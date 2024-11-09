@@ -9,5 +9,5 @@ function makeImageUrl(imagePath: string): string {
 }
 
 export function getImageOrDefault(url: string): string {
-    return url == undefined ? DEFAULT_THUMBNAIL : url
+    return url == undefined ? DEFAULT_THUMBNAIL : makeImageUrl(url)
 }
