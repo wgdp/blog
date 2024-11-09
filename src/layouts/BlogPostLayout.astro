@@ -5,11 +5,12 @@ import Footer from '../components/Footer.astro';
 import type { Props } from '../types/Props';
 import type { Ogp } from '../types/Ogp'
 import { getImageOrDefault } from '../util/image';
-const { frontmatter, url } = Astro.props;
+const { frontmatter, url, content } = Astro.props;
 
+const markdownText = content.rawContent()
 const ogp:Ogp = {
     title: frontmatter.title,
-    description: frontmatter.description,
+    description: markdownText.length <= 100 ? markdownText : markdownText.slice(0, 99),
     thumbnail: getImageOrDefault(frontmatter.thumbnail),
     url: url,
     pageType: "article"
