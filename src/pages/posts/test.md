@@ -5,7 +5,7 @@ pubDate: 2024-11-04
 description: '表示確認用'
 tags: ["テスト", "雑記"]
 emoji: '📰'
-thumbnail: 'https://image.r2.cloudflare.wgdp.dev/default-thumbnail.jpg'
+thumbnail: 'ogp-test.jpg'
 ---
 
 ## はじめに
