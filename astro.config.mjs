@@ -1,7 +1,9 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
 import tailwind from '@astrojs/tailwind';
+import remarkDirective from "remark-directive";
+import remarkEmbedYouTubePlugin from "./src/plugins/youtube";
+import remarkEmbedLinkCardPlugin from './src/plugins/linkcard';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,6 +13,11 @@ export default defineConfig({
       footnoteLabel: ' ',
       footnoteLabelProperties: { className: ['mb-10'] },
       footnoteLabelTagName: 'hr',
-    }
+    },
+    remarkPlugins: [
+       remarkDirective,
+       remarkEmbedLinkCardPlugin,
+       remarkEmbedYouTubePlugin,
+    ],
   }
 });

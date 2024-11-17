@@ -31,6 +31,10 @@ Consenseは箇条書きに特化しているメモサービスであり、ブロ
 
 また、このブログは[Astro](https://astro.build/)で作っているため、気に入らない部分があれば、自分で好きなようにカスタマイズできるのがConsenseと違って良い部分だと思っている。
 
+::linkcard{url="https://wgdp.dev/posts/first"}
+
+https://www.youtube.com/watch?v=1igW0D8gfoM
+
 まあ、もっともらしい理由を色々つけたが、要はCloudflareのサービスと触ったことない技術で遊びたかっただけである。
 （普段ゲームばっかりしているのでこういう遊びで遊んでいると、意味のあることをやっている感がでて精神が回復するのも良い）
 

@@ -1,0 +1,42 @@
+---
+import ogs from 'open-graph-scraper'
+
+interface Props {
+  url: string
+  title?: string
+  image?: string
+  description?: string
+}
+
+const { url, title, image, description } = Astro.props
+
+async function getOpenGraphData(url: string) {
+  const options = { url }
+  try {
+    const { result } = await ogs(options)
+    return result
+  } catch (error) {
+    console.error('Error fetching Open Graph Data:', error)
+    return {}
+  }
+}
+
+const websiteData = await getOpenGraphData(url)
+const ogImage = image || websiteData?.ogImage?.[0]?.url || null
+const ogTitle = title || websiteData?.ogTitle || 'タイトルの取得に失敗しました'
+const ogDescription = description || websiteData?.ogDescription || ''
+---
+
+
+<a href={url} target="_blank" class="not-prose">
+  <div class="grid max-w-full grid-cols-[30%_1fr_24px] gap-4 rounded-md border border-nord-6 text-nord-1 transition-colors duration-200 hover:bg-nord-6">
+    <div class="h-32 overflow-hidden">
+      <img src={ogImage} class="object-cover object-center h-full w-full rounded-s-md"/>
+    </div>
+    <div class="flex flex-col flex-1 py-2">
+      <h5 class="text-xl font-bold mb-2">{ogTitle.length <= 40 ? ogTitle : ogTitle.slice(0, 39) + '...'}</h5>
+      <p class="text-xs flex-grow">{ogDescription.length <= 150 ? ogDescription : ogDescription.slice(0, 149) + '...'}</p>
+      <span class="text-xs">{url.length <= 60 ? url : url.slice(0, 59) + '...'}</span>
+    </div>
+  </div>
+</a>
