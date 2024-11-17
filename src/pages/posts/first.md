@@ -8,8 +8,10 @@ tags: ["雑記"]
 
 ## ことのおこり
 
-今までは[Consense](https://scrapbox.io/wgdp/)（旧：Scrapbox）に色々書いていたのだが、
+今までは Consense （旧：Scrapbox）に色々書いていたのだが、
 モチベーションの低下とともにあまり更新しなくなってしまっていた。
+
+::linkcard{url="https://scrapbox.io/wgdp/"}
 
 そんな時Cloudflareを使って無料で色々にハマってしまい、ZeroTrustなどで遊んでいたのだが、
 
@@ -29,11 +31,9 @@ Consenseは箇条書きに特化しているメモサービスであり、ブロ
 最も、記事はMarkdownで書いているため、こちらでも気軽に箇条書きを連打することは可能。
 ただ、それをしてしまうとブログに移行する意味がなくなってしまうのでやらない。
 
-また、このブログは[Astro](https://astro.build/)で作っているため、気に入らない部分があれば、自分で好きなようにカスタマイズできるのがConsenseと違って良い部分だと思っている。
+また、このブログはAstroで作っているため、気に入らない部分があれば、自分で好きなようにカスタマイズできるのがConsenseと違って良い部分だと思っている。
 
-::linkcard{url="https://wgdp.dev/posts/first"}
-
-https://www.youtube.com/watch?v=1igW0D8gfoM
+::linkcard{url="https://astro.build/"}
 
 まあ、もっともらしい理由を色々つけたが、要はCloudflareのサービスと触ったことない技術で遊びたかっただけである。
 （普段ゲームばっかりしているのでこういう遊びで遊んでいると、意味のあることをやっている感がでて精神が回復するのも良い）
