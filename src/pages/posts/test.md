@@ -116,5 +116,19 @@ func main() {
 
 ~~打消~~
 
+ディレクティブ
+
+以下のように書く。リンクカードとYoutube埋め込み。
+
+```markdown
+::linkcard{url="https://zenn.dev/"}
+::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+```
+
+::linkcard{url="https://zenn.dev/"}
+::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+
+注釈
+
 注釈はFootnotes以下に書かれるらしい[^1]
 [^1]: これが注釈内容だ！

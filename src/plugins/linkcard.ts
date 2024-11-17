@@ -41,6 +41,7 @@ async function visitor(node: LeafDirective) {
         properties: {
           class: [
             "grid",
+            "my-8",
             "max-w-full",
             "grid-cols-[30%_1fr_24px]",
             "gap-4",
