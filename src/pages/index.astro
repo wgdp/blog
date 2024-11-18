@@ -2,10 +2,12 @@
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import LinkCard from '../components/LinkCard.astro';
 import githubLogo from '../assets/github.png';
 import xLogo from '../assets/x.png';
 import type { Ogp } from '../types/Ogp';
 import { DEFAULT_THUMBNAIL } from '../util/const';
+import type { Frontmatter } from '../types/Frontmatter';
 
 const { url } = Astro.props;
 const ogp:Ogp = {
@@ -15,6 +17,9 @@ const ogp:Ogp = {
     url: url,
     pageType: "website"
 }
+
+const allPosts = (await Astro.glob<Frontmatter>('../pages/posts/*.md'));
+const showPosts = allPosts.length <= 5 ? allPosts : allPosts.slice(0, 4);
 ---
 
 <html lang="ja">
@@ -32,14 +37,17 @@ const ogp:Ogp = {
                     <h1 class="text-4xl mx-auto mb-10">このサイトについて</h1>
                     <p class="mx-auto">思いつくままに何かを書きます。</p>
                     <p class="mx-auto">やる気次第で、技術やゲームの感想記事などが追加されていく予定。</p>
-                    <p class="mx-auto"><a href="/posts">Posts</a> を覗いてみると記事が見れるかも...</p>
                 </div>
                 <div class="text-2xl flex flex-col justify-center my-28 leading-relaxed">
-                    <h1 class="text-4xl mx-auto mb-10">あなたは誰？</h1>
-                    <p class="mx-auto">wgdp と名乗っています。</p>
-                    <p class="mx-auto text-sm mb-2">（呼びづらいので今後もっと呼びやすいハンドルネームに変えたい）</p>
-                    <p class="mx-auto">より詳しいことは <a href="/about">About</a> にあるかもしれません。</p>
-                    <img src="https://image.r2.cloudflare.wgdp.dev/yadon-and-clab.png" alt="ヤドンとカニ" class="mt-10 mb-5 h-40 w-40 mx-auto rounded-xl shadow">
+                    <h1 class="text-4xl mx-auto mb-10">最新の記事</h1>
+                    {showPosts.map((post) =>
+                        <div class="my-2">
+                            <LinkCard url={"https://wgdp.dev" + post.url} />
+                        </div>
+                    )}
+                    <div class="flex justify-center mt-3 mb-10">
+                        <button  onclick="location.href='/posts'" class="bg-nord-4 text-nord-1 hover:bg-nord-3 hover:text-nord-6 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">もっと見る</button>
+                    </div>
                     <h2 class="text-2xl font-bold mx-auto mt-5">Link</h2>
                     <div class="flex mx-auto mt-5 prose-a:w-8 prose-a:mx-2">
                         <a href="https://x.com/yadonantoka"><img src={xLogo.src} alt="X リンク" /></a>

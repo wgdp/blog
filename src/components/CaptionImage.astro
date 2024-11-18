@@ -1,0 +1,13 @@
+---
+interface Props {
+  src: string
+  alt: string
+  textSize?: string
+}
+const { src, alt, textSize } = Astro.props
+const size = textSize || "text-sm"
+---
+<div class="grid grid-cols-1 justify-center">
+    <div><img src={src} alt={alt}></div>
+    <div class={"text-nord-1 " + size}>{alt}</div>
+</div>
