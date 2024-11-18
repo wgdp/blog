@@ -125,7 +125,7 @@ func main() {
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 ```
 
-::linkcard{url="https://zenn.dev/"}
+::linkcard{url="https://zenn.dev/" alt="キャプション"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 
 注釈
