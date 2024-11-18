@@ -30,7 +30,7 @@ const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md');
                 </div>
                 <div class="text-xl grid grid-cols-2 gap-4 my-28 leading-relaxed">
                     {allPosts.map((post) =>
-                        <a class="rounded-xl bg-white shadow flex flex-col" href={post.url}>
+                        <a class="rounded-xl bg-white border border-nord-6 flex flex-col" href={post.url}>
                             <img class="rounded-t-lg" src={getImageOrDefault(post.frontmatter.thumbnail)} alt="サムネイル" />
                             <div class="p-5 flex-grow">
                                 <h5 class="mb-2 text-nord-3 text-2xl font-bold tracking-tight">{post.frontmatter.title}</h5>
