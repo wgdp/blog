@@ -28,15 +28,15 @@ const allPosts = await Astro.glob<Frontmatter>('../pages/posts/*.md');
                 <div class="flex justify-center my-28">
                     <h1 class="text-7xl text-nord-1 font-normal">Posts</h1>
                 </div>
-                <div class="text-xl grid grid-cols-2 my-28 leading-relaxed">
+                <div class="text-xl grid grid-cols-2 gap-4 my-28 leading-relaxed">
                     {allPosts.map((post) =>
-                        <a class="mx-2 rounded-xl bg-nord-6 flex flex-col" href={post.url}>
+                        <a class="rounded-xl bg-nord-4 flex flex-col" href={post.url}>
                             <img class="rounded-t-lg" src={getImageOrDefault(post.frontmatter.thumbnail)} alt="サムネイル" />
                             <div class="p-5 flex-grow">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-nord-0">{post.frontmatter.title}</h5>
+                                <h5 class="mb-2 text-nord-3 text-2xl font-bold tracking-tight">{post.frontmatter.title}</h5>
                             </div>
                             <div class="pb-2 pe-3 flex justify-center">
-                                <span class="text-sm">{new Date(post.frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
+                                <span class="text-sm text-nord-1">{new Date(post.frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
                             </div>
                         </a>
                     )}
