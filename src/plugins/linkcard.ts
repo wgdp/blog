@@ -44,7 +44,7 @@ async function visitor(node: LeafDirective) {
             "grid",
             "my-8",
             "max-w-full",
-            "grid-cols-[30%_1fr_24px]",
+            "grid-cols-[30%_1fr_5px]",
             "gap-4",
             "rounded-md",
             "border",
@@ -117,7 +117,7 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "span",
                 properties: {
-                  class: ["text-xs", "line-clamp-1", "md:mt-5", "mt-3"],
+                  class: ["text-xs", "line-clamp-1", "md:mt-5", "mt-2"],
                 },
                 children: [
                   {
