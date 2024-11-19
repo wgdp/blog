@@ -21,7 +21,8 @@ async function getOpenGraphData(url: string) {
   }
 }
 
-const websiteData = await getOpenGraphData(url)
+const origin = new URL(url).origin;
+const websiteData = await getOpenGraphData(url);
 const ogImage = image || websiteData?.ogImage?.[0]?.url || null
 const ogTitle = title || websiteData?.ogTitle || 'タイトルの取得に失敗しました'
 const ogDescription = description || websiteData?.ogDescription || ''
@@ -34,9 +35,9 @@ const ogDescription = description || websiteData?.ogDescription || ''
       <img src={ogImage} class="object-cover object-center h-full w-full rounded-s-md"/>
     </div>
     <div class="flex flex-col flex-1 py-2">
-      <h5 class="text-xl font-bold mb-2">{ogTitle.length <= 40 ? ogTitle : ogTitle.slice(0, 39) + '...'}</h5>
-      <p class="text-xs flex-grow">{ogDescription.length <= 150 ? ogDescription : ogDescription.slice(0, 149) + '...'}</p>
-      <span class="text-xs">{url.length <= 60 ? url : url.slice(0, 59) + '...'}</span>
+      <h5 class="md:text-xl text-lg font-bold mb-2 line-clamp-2 leading-tight">{ogTitle}</h5>
+      <p class="text-xs md:line-clamp-2 line-clamp-3">{ogDescription}</p>
+      <span class="text-xs line-clamp-1 md:mt-5 mt-3">{origin}</span>
     </div>
   </div>
 </a>

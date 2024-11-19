@@ -2,6 +2,7 @@ import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
 import ogs from "open-graph-scraper";
 import type { LeafDirective } from "mdast-util-directive";
+import { DESCRIPTION_LIMIT_LENGTH } from "../util/const";
 
 async function getOpenGraphData(url: string) {
   const options = { url };
@@ -17,8 +18,8 @@ async function getOpenGraphData(url: string) {
 async function visitor(node: LeafDirective) {
   if (!node.attributes?.url) return;
 
-  const url = node.attributes.url;
-  const websiteData = await getOpenGraphData(url);
+  const url = new URL(node.attributes.url);
+  const websiteData = await getOpenGraphData(url.href);
   const ogImage =
     node.attributes?.image || websiteData?.ogImage?.[0]?.url || null;
   const ogTitle =
@@ -32,7 +33,7 @@ async function visitor(node: LeafDirective) {
     hProperties: {
       class: ["not-prose"], // typographyのprose無効化
       target: "_blank",
-      href: url,
+      href: url.href,
     },
     hChildren: [
       {
@@ -83,22 +84,19 @@ async function visitor(node: LeafDirective) {
             type: "element",
             tagName: "div",
             properties: {
-              class: ["flex", "flex-col", "flex-1", "py-2"],
+              class: ["flex", "flex-col", "py-2"],
             },
             children: [
               {
                 type: "element",
                 tagName: "h5",
                 properties: {
-                  class: ["text-xl", "font-bold", "mb-2"],
+                  class: ["md:text-xl", "text-lg", "font-bold", "mb-2", "leading-tight", "line-clamp-2"],
                 },
                 children: [
                   {
                     type: "text",
-                    value:
-                      ogTitle.length <= 40
-                        ? ogTitle
-                        : ogTitle.slice(0, 39) + "...",
+                    value: ogTitle,
                   },
                 ],
               },
@@ -106,15 +104,12 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "p",
                 properties: {
-                  class: ["text-xs", "flex-grow"],
+                  class: ["text-xs", "md:line-clamp", "line-clamp-3"],
                 },
                 children: [
                   {
                     type: "text",
-                    value:
-                      ogDescription.length <= 150
-                        ? ogDescription
-                        : ogDescription.slice(0, 149) + "...",
+                    value: ogDescription,
                   },
                 ],
               },
@@ -122,12 +117,12 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "span",
                 properties: {
-                  class: ["text-xs"],
+                  class: ["text-xs", "line-clamp-1", "md:mt-5", "mt-3"],
                 },
                 children: [
                   {
                     type: "text",
-                    value: url.length <= 60 ? url : url.slice(0, 59) + "...",
+                    value: url.origin
                   },
                 ],
               },

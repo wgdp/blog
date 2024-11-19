@@ -10,10 +10,11 @@ import ContentLayout from './ContentLayout.astro';
 
 const { frontmatter, url, rawContent } = Astro.props;
 
-const markdownText = removeMarkdown(rawContent())
+const pattern = new RegExp('::[a-zA-Z0-9_]+\{([^{}]*)\}');
+const markdownText = removeMarkdown(rawContent()).replace(pattern, '')
 const ogp:Ogp = {
     title: frontmatter.title,
-    description: (markdownText.length <= 100 ? markdownText : markdownText.slice(0, 99)) + '...',
+    description: (markdownText.length <= 70 ? markdownText : markdownText.slice(0, 69)) + '...',
     thumbnail: getImageOrDefault(frontmatter.thumbnail),
     url: url,
     pageType: "article"
@@ -33,7 +34,7 @@ const ogp:Ogp = {
                     </div>
                 </div>
                 <div class="mt-20 mb-5">
-                    <h1 class="text-4xl font-black text-nord-2">{frontmatter.title}</h1>
+                    <h1 class="md:text-4xl text-3xl font-black text-nord-2">{frontmatter.title}</h1>
                 </div>
                 <div class="mb-10">
                     {
