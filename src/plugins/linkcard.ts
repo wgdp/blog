@@ -89,9 +89,9 @@ async function visitor(node: LeafDirective) {
             children: [
               {
                 type: "element",
-                tagName: "h5",
+                tagName: "strong",
                 properties: {
-                  class: ["md:text-xl", "text-lg", "font-bold", "mb-2", "leading-tight", "line-clamp-2"],
+                  class: ["md:text-lg", "text-sm", "font-black", "text-nord-0", "mb-2", "leading-tight", "line-clamp-2"],
                 },
                 children: [
                   {
