@@ -104,7 +104,7 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "p",
                 properties: {
-                  class: ["text-xs", "md:line-clamp", "line-clamp-3"],
+                  class: ["text-xs", "md:line-clamp", "line-clamp-3", "leading-tight"],
                 },
                 children: [
                   {
