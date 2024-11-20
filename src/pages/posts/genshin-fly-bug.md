@@ -4,7 +4,7 @@ title: '原神の浮遊バグで遊んだ記録'
 pubDate: 2022-11-09
 thumbnail: "fly-bug1.jpg"
 description: '原神の浮遊バグで遊んでみた感想'
-tags: ["雑記", "ゲーム", "ScrapBox移行記事"]
+tags: ["雑記", "ゲーム", "ScrapBox"]
 ---
 
 この記事はScrapBoxからの移行記事です。
