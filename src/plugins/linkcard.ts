@@ -42,7 +42,7 @@ async function visitor(node: LeafDirective) {
         properties: {
           class: [
             "grid",
-            "my-8",
+            "my-4",
             "max-w-full",
             "grid-cols-[30%_1fr_5px]",
             "gap-4",
@@ -60,7 +60,7 @@ async function visitor(node: LeafDirective) {
             type: "element",
             tagName: "div",
             properties: {
-              class: ["h-32", "overflow-hidden"],
+              class: ["h-32"],
             },
             children: [
               {
@@ -68,10 +68,12 @@ async function visitor(node: LeafDirective) {
                 tagName: "img",
                 properties: {
                   class: [
+                    "overflow-hidden",
                     "object-cover",
                     "object-center",
                     "h-full",
                     "w-full",
+                    "m-auto",
                     "rounded-s-md",
                   ],
                   src: ogImage,
@@ -91,7 +93,7 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "strong",
                 properties: {
-                  class: ["md:text-lg", "text-sm", "font-black", "text-nord-0", "mb-2", "leading-tight", "line-clamp-2"],
+                  class: ["md:text-lg", "text-sm", "font-black", "text-nord-0", "mb-2", "leading-tight", "line-clamp-1"],
                 },
                 children: [
                   {
