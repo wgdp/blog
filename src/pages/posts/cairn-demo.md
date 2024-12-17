@@ -84,4 +84,4 @@ thumbnail: "cairn-title.jpg"
 
 **待ってろよ！マウント・カミ！！！**
 
-![やばい姿勢](https://image.r2.cloudflare.wgdp.dev/cairn-ku.jpg)
+![やばい姿勢](https://image.r2.cloudflare.wgdp.dev/cairn-sisei.jpg)
