@@ -14,11 +14,11 @@ thumbnail: "balatro.png"
 12/13にThe Game Awards（TGA）が開催されます。
 これは毎年年末に開催されるゲームのイベントで、一年の最後に盛り上がれるイベントとして私は毎年楽しみにしています。
 
-::linkcard{url="https://www.thegameawards.com/"}
+::linkcard{urls="https://www.thegameawards.com/"}
 
 こちらはファミ通の記事。
 
-::linkcard{url="https://www.famitsu.com/article/202411/24617"}
+::linkcard{urls="https://www.famitsu.com/article/202411/24617"}
 
 TGAでは、ゲームなどに対する賞の授賞式や、新作ゲームの情報発表などが行われます。
 
@@ -45,7 +45,7 @@ TGAでは、ゲームなどに対する賞の授賞式や、新作ゲームの�
 ゲームの詳細については、色々なメディアが解説していて、
 私の拙い文章よりはわかりやすいと思うので、検索して一番上に出てきたITmediaの記事を貼っておきます。
 
-::linkcard{url="https://www.itmedia.co.jp/news/articles/2403/21/news115.html"}
+::linkcard{urls="https://www.itmedia.co.jp/news/articles/2403/21/news115.html"}
 
 ## TGAでノミネートされるまで存在だけ知っていた
 
@@ -90,7 +90,7 @@ Steamのウィッシュリストにすら入れていませんでした。
 
 それも直近プレイしたゲームではなく何年も前にプレイしたゲーム...
 
-::linkcard{url="https://pad.gungho.jp/member/"}
+::linkcard{urls="https://pad.gungho.jp/member/"}
 
 そう、**パズドラ**です。
 
@@ -122,7 +122,7 @@ Steamのウィッシュリストにすら入れていませんでした。
 
 セール来てなくても安いです（Steamで1700円）！
 
-::linkcard{url="https://store.steampowered.com/app/2379780/Balatro/?l=japanese"}
+::linkcard{urls="https://store.steampowered.com/app/2379780/Balatro/?l=japanese"}
 
 PCを持ってない？問題ありません！
 
@@ -130,13 +130,7 @@ Nintendo Switch, PS4, PS5, Android, iOS！
 
 基本的なプラットフォームの殆どでリリースされています！
 
-::linkcard{url="https://store-jp.nintendo.com/item/software/D70010000072053"}
-
-::linkcard{url="https://www.playstation.com/ja-jp/games/balatro/"}
-
-::linkcard{url="https://play.google.com/store/apps/details?id=com.playstack.balatro.android&hl=ja"}
-
-::linkcard{url="https://apps.apple.com/jp/app/balatro/id6502453075"}
+::linkcard{urls="https://store-jp.nintendo.com/item/software/D70010000072053,https://www.playstation.com/ja-jp/games/balatro/,https://play.google.com/store/apps/details?id=com.playstack.balatro.android&hl=ja,https://apps.apple.com/jp/app/balatro/id6502453075"}
 
 TGAの賞にも複数ノミネートされています！
 
@@ -148,6 +142,6 @@ TGAの賞にも複数ノミネートされています！
 
 メタスコアの点数は90（ユーザースコアも8.3）！
 
-::linkcard{url="https://www.metacritic.com/game/balatro/"}
+::linkcard{urls="https://www.metacritic.com/game/balatro/"}
 
 やらない理由がないですよね！
