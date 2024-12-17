@@ -17,7 +17,7 @@ imageLicense:
 
 本ブログではNordというカラーパレットを利用しています。
 
-::linkcard{url="https://www.nordtheme.com/"}
+::linkcard{urls="https://www.nordtheme.com/"}
 
 Nordはドイツのソフトウェア開発者であるSven Greb 氏が作成したカラーパレットであり、エディタやターミナルのテーマとして有名です。
 
@@ -36,7 +36,7 @@ Nordはドイツのソフトウェア開発者であるSven Greb 氏が作成し
 
 Nordを何も入ってないAstroで利用する場合は、npmからnordのパッケージをインストールしてくればいいですが、本ブログはTailwindを利用しているため、Tailwind用のプラグインを利用しています。
 
-::linkcard{url="https://github.com/crumb1e/tailwind-nord"}
+::linkcard{urls="https://github.com/crumb1e/tailwind-nord"}
 
 ただnord0からnord15までを定義しているだけのプラグインですが、それ故にシンプルに手間が削減されて非常に助かりました。（手動でやろうとすると結構めんどくさそうだった）
 

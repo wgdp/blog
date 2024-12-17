@@ -121,11 +121,12 @@ func main() {
 以下のように書く。リンクカードとYoutube埋め込み。
 
 ```markdown
-::linkcard{url="https://zenn.dev/"}
+# コンマで複数URLを区切る
+::linkcard{urls="https://zenn.dev/,https://zenn.dev/"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 ```
 
-::linkcard{url="https://zenn.dev/" alt="キャプション"}
+::linkcard{urls="https://zenn.dev/,https://qiita.com/" alt="キャプション"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 
 注釈
