@@ -18,8 +18,13 @@ const ogp:Ogp = {
     pageType: "website"
 }
 
-const allPosts = (await Astro.glob<Frontmatter>('../pages/posts/*.md'));
-const showPosts = allPosts.length <= 5 ? allPosts : allPosts.slice(0, 4);
+
+const allPosts = (await Astro.glob<Frontmatter>('../pages/posts/*.md')).sort((a, b) => {
+    const aDate = new Date(a.frontmatter.pubDate);
+    const bDate = new Date(b.frontmatter.pubDate);
+    return bDate.getTime() - aDate.getTime();
+});
+const showPosts = allPosts.length <= 5 ? allPosts : allPosts.slice(0, 5);
 ---
 
 <html lang="ja">
