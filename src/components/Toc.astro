@@ -1,0 +1,39 @@
+---
+import TocHeading from './TocHeading.astro';
+
+const { headings } = Astro.props;
+
+const detailsOpenProps = headings.length <= 10 ? { open: true } : {};
+const toc = buildHierarchy(headings);
+
+function buildHierarchy(headings: any) {
+   const toc: any[] = [];
+   const parentHeadings = new Map();
+   
+   if (!headings)
+      return toc;
+   
+   headings.forEach((h: any) => {
+      const heading = { ...h, subheadings: [] };
+      parentHeadings.set(heading.depth, heading);
+      if (heading.depth === 2) {
+         toc.push(heading);
+      } else {
+         parentHeadings.get(heading.depth - 1).subheadings.push(heading);
+      }
+   });
+   return toc;
+}
+---
+{toc && toc.length > 0 && (
+   <details class="bg-nord-6 rounded-lg p-4" {...detailsOpenProps}>
+      <summary class="h3 font-bold cursor-pointer">目次</summary>
+      <nav class="bg-nord-6 rounded-lg p-4">
+         <ul>
+         {toc.map((heading) => (
+         <TocHeading heading={heading} />
+         ))}
+         </ul>
+      </nav>
+   </details>
+)}
