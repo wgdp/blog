@@ -16,8 +16,8 @@ thumbnail: 'ogp-test.jpg'
 まず、見出しのチェックから
 
 ---
+h1はタイトルが使っているので基本使わない。
 
-# h1
 ## h2
 ### h3
 #### h4
@@ -25,10 +25,6 @@ thumbnail: 'ogp-test.jpg'
 ###### h6
 
 行間チェックも
-
-# h1
-
-テストです
 
 ## h2
 
@@ -121,7 +117,7 @@ func main() {
 以下のように書く。リンクカードとYoutube埋め込み。
 
 ```markdown
-# コンマで複数URLを区切る
+## コンマで複数URLを区切る
 ::linkcard{urls="https://zenn.dev/,https://zenn.dev/"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
 ```
