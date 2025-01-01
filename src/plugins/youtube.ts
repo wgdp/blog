@@ -21,6 +21,7 @@ export default function remarkEmbedYouTubePlugin() {
             tagName: "iframe",
             properties: {
               src: `https://www.youtube-nocookie.com/embed/${id}`,
+              loading: "lazy",
               allowFullscreen: true,
               title: "YouTube video player",
               class: [
