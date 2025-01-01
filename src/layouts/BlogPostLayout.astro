@@ -38,8 +38,9 @@ const ogp:Ogp = {
                 <div class="mt-20 mb-5">
                     <h1 class="md:text-4xl text-3xl font-black text-nord-2">{frontmatter.title}</h1>
                 </div>
-                <div class="my-2">
-                    <span>{rawContentText.length}文字</span>
+                <div class="my-2 flex gap-2">
+                    <span class="text-sm text-nord-3">{new Date(frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
+                    <span class="text-sm text-nord-3">{(rawContentText.length <= 1000 ? "1000文字以下" : ("約" + (rawContentText.length / 1000 | 0) * 1000) + "文字")}</span>
                 </div>
                 <div class="mb-10">
                     {
