@@ -2,16 +2,18 @@
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Toc from '../components/Toc.astro';
 import type { Props } from '../types/Props';
 import type { Ogp } from '../types/Ogp'
 import { getImageOrDefault } from '../util/image';
 import removeMarkdown from 'remove-markdown';
 import ContentLayout from './ContentLayout.astro';
 
-const { frontmatter, url, rawContent } = Astro.props;
+const { frontmatter, url, rawContent, headings } = Astro.props;
 
 const pattern = new RegExp('::[a-zA-Z0-9_]+\{([^{}]*)\}');
-const markdownText = removeMarkdown(rawContent()).replace(pattern, '')
+const rawContentText = rawContent()
+const markdownText = removeMarkdown(rawContentText).replace(pattern, '')
 const ogp:Ogp = {
     title: frontmatter.title,
     description: (markdownText.length <= 70 ? markdownText : markdownText.slice(0, 69)) + '...',
@@ -36,11 +38,15 @@ const ogp:Ogp = {
                 <div class="mt-20 mb-5">
                     <h1 class="md:text-4xl text-3xl font-black text-nord-2">{frontmatter.title}</h1>
                 </div>
+                <div class="my-2">
+                    <span>{rawContentText.length}文字</span>
+                </div>
                 <div class="mb-10">
                     {
                         frontmatter.tags.map((tag) => <span class="inline-flex items-center rounded-xl bg-nord-4 mx-1 px-2 py-1 text-xs font-medium">{tag}</span>)
                     }
                 </div>
+                <Toc headings={headings} />
                 <ContentLayout>
                     <slot />
                 </div>
