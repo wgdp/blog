@@ -31,7 +31,7 @@ const ogp:Ogp = {
             <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
                 <div class="pt-28">
                     <div class="grid grid-cols-1 justify-center">
-                        <div><img class="h-fit w-fit m-auto rounded-xl" src={getImageOrDefault(frontmatter.thumbnail)} alt="サムネイル"></div>
+                        <div><img class="w-fit m-auto rounded-xl" src={getImageOrDefault(frontmatter.thumbnail)} alt="サムネイル"></div>
                         {frontmatter.imageLicense && <div class="text-nord-1 text-[10px]">Image © {frontmatter.imageLicense.author} licensed under the <a class="text-nord-9 underline" href={frontmatter.imageLicense.link}>{frontmatter.imageLicense.license}</a>.</div>}
                     </div>
                 </div>

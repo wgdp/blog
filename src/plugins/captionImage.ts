@@ -25,7 +25,8 @@ async function visitor(node: LeafDirective) {
             properties: {
               src: imageSrc,
               loading: "lazy",
-              alt: imageAlt
+              alt: imageAlt,
+              class: ["rounded-xl", "m-auto"],
             },
             children: [],
           },
