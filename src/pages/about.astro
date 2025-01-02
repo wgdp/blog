@@ -7,6 +7,7 @@ import ContentLayout from '../layouts/ContentLayout.astro';
 import CaptionImage from '../components/CaptionImage.astro';
 import type { Ogp } from '../types/Ogp';
 import { DEFAULT_THUMBNAIL } from '../util/const';
+import { makeImageUrl } from '../util/image';
 
 const { url } = Astro.props;
 const ogp:Ogp = {
@@ -28,7 +29,7 @@ const ogp:Ogp = {
                     <h1 class="text-7xl text-nord-1 font-normal">About</h1>
                 </div>
                 <div class="mb-20">
-                    <img src="https://image.r2.cloudflare.wgdp.dev/yadon-and-clab.png" alt="現在使っているアイコン" class="mt-10 mb-5 h-40 w-40 mx-auto rounded-xl">
+                    <img src={makeImageUrl("yadon-and-clab.png")} alt="現在使っているアイコン" class="mt-10 mb-5 h-40 w-40 mx-auto rounded-xl">
                 </div>
                 <ContentLayout>
                     <h2>はじめに</h2>
@@ -68,14 +69,14 @@ const ogp:Ogp = {
                     主に建築や工業Modなどで遊んでいます。</p>
 
                     
-                    <CaptionImage src="https://image.r2.cloudflare.wgdp.dev/about-minecraft-house.png" alt="Minecraftで建築した家の例" />
+                    <CaptionImage src="about-minecraft-house.png" alt="Minecraftで建築した家の例" />
 
                     <p>他にも色々なゲームで遊んでいます。</p>
                     <div class="grid grid-cols-2 gap-4 my-10">
-                        <CaptionImage src="https://image.r2.cloudflare.wgdp.dev/about-game1.png" alt="崩壊スターレイル" textSize="text-xs"/>
-                        <CaptionImage src="https://image.r2.cloudflare.wgdp.dev/about-game2.jpg" alt="Ark: Survival Evolved" textSize="text-xs"/>
-                        <CaptionImage src="https://image.r2.cloudflare.wgdp.dev/about-game3.jpg" alt="Elden Ring" textSize="text-xs"/>
-                        <CaptionImage src="https://image.r2.cloudflare.wgdp.dev/about-game4.jpg" alt="God of War" textSize="text-xs"/>
+                        <CaptionImage src="about-game1.png" alt="崩壊スターレイル" textSize="text-xs"/>
+                        <CaptionImage src="about-game2.jpg" alt="Ark: Survival Evolved" textSize="text-xs"/>
+                        <CaptionImage src="about-game3.jpg" alt="Elden Ring" textSize="text-xs"/>
+                        <CaptionImage src="about-game4.jpg" alt="God of War" textSize="text-xs"/>
                     </div>
                 </ContentLayout>
             </div>

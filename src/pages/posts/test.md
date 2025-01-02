@@ -114,16 +114,22 @@ func main() {
 
 ディレクティブ
 
-以下のように書く。リンクカードとYoutube埋め込み。
+以下のように書く。
+
+- リンクカード
+- youtube埋め込み
+- キャプション付き画像
 
 ```markdown
 ## コンマで複数URLを区切る
 ::linkcard{urls="https://zenn.dev/,https://zenn.dev/"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+::captionImage{src="default-thumbnail.jpg" alt="ここがキャプションになる"}
 ```
 
 ::linkcard{urls="https://zenn.dev/,https://qiita.com/" alt="キャプション"}
 ::youtube{url="https://www.youtube.com/watch?v=dQw4w9WgXcQ"}
+::captionImage{src="default-thumbnail.jpg" alt="ここがキャプションになる"}
 
 注釈
 
