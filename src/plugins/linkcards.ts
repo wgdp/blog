@@ -79,6 +79,7 @@ async function visitor(node: LeafDirective) {
                     type: "element",
                     tagName: "img",
                     properties: {
+                      loading: "lazy",
                       class: [
                         "overflow-hidden",
                         "object-cover",

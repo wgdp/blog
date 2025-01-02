@@ -8,6 +8,6 @@ const { src, alt, textSize } = Astro.props
 const size = textSize || "text-sm"
 ---
 <div class="grid grid-cols-1 justify-center">
-    <div><img src={src} alt={alt}></div>
+    <div><img src={src} alt={alt} loading="lazy"></div>
     <div class={"text-nord-3 " + size}>{alt}</div>
 </div>
