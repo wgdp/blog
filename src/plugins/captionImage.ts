@@ -24,6 +24,7 @@ async function visitor(node: LeafDirective) {
             tagName: "img",
             properties: {
               src: imageSrc,
+              loading: "lazy",
               alt: imageAlt
             },
             children: [],
