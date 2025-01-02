@@ -1,4 +1,6 @@
 ---
+import { makeImageUrl } from '../util/image'
+
 interface Props {
   src: string
   alt: string
@@ -6,8 +8,10 @@ interface Props {
 }
 const { src, alt, textSize } = Astro.props
 const size = textSize || "text-sm"
+
+const imageUrl = makeImageUrl(src);
 ---
 <div class="grid grid-cols-1 justify-center">
-    <div><img src={src} alt={alt} loading="lazy"></div>
+    <div><img src={imageUrl} alt={alt} loading="lazy"></div>
     <div class={"text-nord-3 " + size}>{alt}</div>
 </div>

@@ -35,7 +35,7 @@ thumbnail: "cairn-title.jpg"
 
 もちろん自然の崖を登ることもできるが、崖を登る前にボルダリング施設のような場所で、人口の壁を登ることもできる。
 
-::captionImage{src="https://image.r2.cloudflare.wgdp.dev/cairn-building.jpg" alt="いくつかの課題があるが、物によってはかなり難易度が高いものもある"}
+::captionImage{src="cairn-building.jpg" alt="いくつかの課題があるが、物によってはかなり難易度が高いものもある"}
 
 ちなみある程度の高さから落下すると体力を失い、最悪死ぬので、落下しないように頑張るか、
 いい感じの地点にピトン（ロープを通す杭的なやつ）を打って、一番下まで落下するという最悪のパターンを回避することが大切だった。
@@ -84,4 +84,4 @@ thumbnail: "cairn-title.jpg"
 
 **待ってろよ！マウント・カミ！！！**
 
-::captionImage{src="https://image.r2.cloudflare.wgdp.dev/cairn-sisei.jpg" alt="それ足ついてます？と言いたくなる姿勢で休んでいて面白い"}
+::captionImage{src="cairn-sisei.jpg" alt="それ足ついてます？と言いたくなる姿勢で休んでいて面白い"}

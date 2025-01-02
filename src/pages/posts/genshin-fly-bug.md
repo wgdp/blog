@@ -43,6 +43,6 @@ tags: ["雑記", "ゲーム", "ScrapBox"]
 
 ## 当時撮った写真
 
-![璃月港](https://image.r2.cloudflare.wgdp.dev/fly-bug2.jpg)
+::captionImage{src="fly-bug2.jpg" alt="璃月港"}
 
-![スメール上空](https://image.r2.cloudflare.wgdp.dev/fly-bug3.jpg)
+::captionImage{src="fly-bug3.jpg" alt="スメール上空"}

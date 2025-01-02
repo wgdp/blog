@@ -1,12 +1,20 @@
 import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
 import type { LeafDirective } from "mdast-util-directive";
+import { isUrl, makeImageUrl } from "../util/image";
+
 
 async function visitor(node: LeafDirective) {
   if (!node.attributes?.src) return;
   if (!node.attributes?.alt) return;
 
-  const imageSrc = node.attributes.src
+  let imageSrc: string;
+  if (isUrl(node.attributes.src)) {
+    imageSrc = node.attributes.src
+  } else {
+    imageSrc = makeImageUrl(node.attributes.src)
+  }
+
   const imageAlt = node.attributes.alt
 
   node.data = {
@@ -26,7 +34,7 @@ async function visitor(node: LeafDirective) {
               src: imageSrc,
               loading: "lazy",
               alt: imageAlt,
-              class: ["rounded-xl", "m-auto"],
+              class: ["rounded-xl"],
             },
             children: [],
           },

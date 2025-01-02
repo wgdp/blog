@@ -27,11 +27,9 @@ TGAでは、ゲームなどに対する賞の授賞式や、新作ゲームの�
 11/9あたりに賞の候補にノミネートされた作品が発表されていたので、
 その年の最も優れたゲームに送られる"Game of the Year"（通称GOTY）にノミネートされた作品を確認したら、奴はいました。
 
-![GOTYにノミネートされた作品](https://image.r2.cloudflare.wgdp.dev/goty-nominees-2024.png)
+::captionImage{src="goty-nominees-2024.png" alt="2024年のGOTY候補たち"}
 
-左から二番目...
-
-![やつ](https://image.r2.cloudflare.wgdp.dev/balatro-nominees.png)
+::captionImage{src="balatro-nominees.png" alt="左から二番目..."}
 
 そう、**Balatro**です。
 
@@ -68,7 +66,7 @@ Steamのウィッシュリストにすら入れていませんでした。
 
 色々連鎖してスコアがとんでもないことになっていますが、本来フラッシュ（出したカードがスペードやダイヤ、クラブやハートのどれか一種類で統一されているときの役）を出したときのスコアは、
 
-![スコア表](https://image.r2.cloudflare.wgdp.dev/balatro-score.png)
+::captionImage{src="balatro-score.png" alt="当時のスコア"}
 
 **35✕4で140**です。それが、バフの力で**479✕18156になり8696724**まで跳ね上がっています。
 
