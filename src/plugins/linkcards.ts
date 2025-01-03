@@ -15,6 +15,11 @@ async function getOpenGraphData(url: string) {
   }
 }
 
+function getAmazonImageUrl(url: URL) {
+  const slug = url.pathname.split("/").slice(-1)[0]
+  return "https://images.amazon.com/images/P/" + slug + ".09_SL110_.jpg"
+}
+
 async function visitor(node: LeafDirective) {
   if (!node.attributes?.urls) return;
 
@@ -30,7 +35,7 @@ async function visitor(node: LeafDirective) {
   for (const preParseUrl of splittedPreParseUrls) {
     const url = new URL(preParseUrl)
     const websiteData = await getOpenGraphData(url.href);
-    const ogImage =
+    let ogImage =
       node.attributes?.image || websiteData?.ogImage?.[0]?.url || null;
     const ogTitle =
       node.attributes?.title ||
@@ -38,6 +43,10 @@ async function visitor(node: LeafDirective) {
       "タイトルの取得に失敗しました";
     const ogDescription =
       node.attributes?.description || websiteData?.ogDescription || "";
+
+    if (url.hostname == "www.amazon.co.jp") {
+      ogImage = getAmazonImageUrl(url)
+    }
 
     node.data.hChildren?.push(
       {

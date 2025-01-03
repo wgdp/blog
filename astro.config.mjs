@@ -19,7 +19,7 @@ export default defineConfig({
        remarkDirective,
        remarkEmbedLinkCardPlugin,
        remarkEmbedYouTubePlugin,
-       remarkEmbedCaptionImagePlugin
+       remarkEmbedCaptionImagePlugin,
     ],
   }
 });
