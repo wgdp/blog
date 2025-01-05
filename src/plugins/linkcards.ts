@@ -89,6 +89,7 @@ async function visitor(node: LeafDirective) {
                     tagName: "img",
                     properties: {
                       loading: "lazy",
+                      alt: url.origin + " のサムネイル",
                       class: [
                         "overflow-hidden",
                         "object-cover",
