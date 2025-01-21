@@ -69,49 +69,59 @@ Cloudflare Pagesを使っている。現状の利用量であれば無料。
 
 ::captionImage{src="transformations-sample.png" alt="かなり帯域を節約できていることが確認できる"}
 
-## 実装した要素
+## ブログの要素
 
-### UI
+### UI全般
 
 UIは全部自作した。
 こういったUIのカスタマイズは大好きなので、それほど苦労はしなかった。
+
+### 色
 
 ベースの色に関しては、Nordを採用している。
 Nordに関しては以下の記事に書いている。
 
 ::linkcard{urls="https://wgdp.dev/posts/blog-color"}
 
-#### コンポーネント
+### コンポーネント
 
 コンポーネントもリンクカードやキャプション付きの画像など、いくつか必要なものがあったので、自作した。
 
 ::linkcard{urls="https://github.com/wgdp/blog/tree/main/src/components"}
 
-また、Markdown内でも利用したかったので、remarkのプラグインとして実装した。
+#### リンクカード
 
-::linkcard{urls="https://github.com/wgdp/blog/tree/main/src/plugins"}
+例えば以下のようなもの。
 
-以下の例のように記述すると、ビルド時に変換されるようになった。
+::linkcard{urls="https://wgdp.dev"}
+
+記事内で利用しているものはremarkのプラグインとして実装していて、Markdown変換時に以下のような構文を解析してHTMLに変換している。
 
 ```markdown
 // リンクカード
 ::linkcard{urls="https//wgdp.dev"}
+```
 
+#### キャプション付きの画像
+
+これも記事内のものはremarkのプラグインとして実装していて、Markdown変換時に以下のような構文を解析してHTMLに変換している。
+
+```markdown
 // キャプション付きの画像
 ::captionImage{src="bonsai.png" alt="盆栽"}
 ```
 
-#### Favicon
+本当であれば、Markdownの通常の構文（`![alt](src)`的なやつ）で実現したかったがやり方が分からなかったので一旦この形式で実装した。
 
-Faviconの画像も自作した。はじめはClaudeに作らせたドット絵を使っていたが、
-自分で書いた盆栽の絵に変えてみた。（この記事のサムネイルのやつ）
+#### その他
 
-#### その多
+ToCなども自作した。
 
-その他以下の機能を自作した。
+### タグ機能
 
-- タグ機能
-- ToC
+Astroにドキュメントがあったので参考にしつつ自作した。
+
+::linkcard{urls="https://docs.astro.build/ja/tutorial/5-astro-api/2/"}
 
 ## 今後
 
