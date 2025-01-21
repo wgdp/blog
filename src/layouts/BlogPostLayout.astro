@@ -1,59 +1,159 @@
 ---
-import Head from '../components/Head.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import Toc from '../components/Toc.astro';
-import type { Props } from '../types/Props';
-import type { Ogp } from '../types/Ogp'
-import { getImageOrDefault } from '../util/image';
-import removeMarkdown from 'remove-markdown';
-import ContentLayout from './ContentLayout.astro';
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Toc from "../components/Toc.astro";
+import type { Props } from "../types/Props";
+import type { Ogp } from "../types/Ogp";
+import { getImageOrDefault } from "../util/image";
+import removeMarkdown from "remove-markdown";
+import ContentLayout from "./ContentLayout.astro";
+import { getSlugByTagName } from "../util/tags";
 
 const { frontmatter, url, rawContent, headings } = Astro.props;
 
-const pattern = new RegExp('::[a-zA-Z0-9_]+\{([^{}]*)\}');
-const rawContentText = rawContent()
-const markdownText = removeMarkdown(rawContentText).replace(pattern, '')
-const ogp:Ogp = {
-    title: frontmatter.title,
-    description: (markdownText.length <= 70 ? markdownText : markdownText.slice(0, 69)) + '...',
-    thumbnail: getImageOrDefault(frontmatter.thumbnail),
-    url: url,
-    pageType: "article"
-}
+const allPosts = (await Astro.glob("../pages/posts/*.md")).sort((a, b) => {
+  return (
+    new Date(b.frontmatter.pubDate).getTime() -
+    new Date(a.frontmatter.pubDate).getTime()
+  );
+});
+
+const currentIndex = allPosts.findIndex((post) => post.url === url);
+
+const prevPost =
+  currentIndex < allPosts.length - 1 ? allPosts[currentIndex + 1] : null;
+const nextPost = currentIndex > 0 ? allPosts[currentIndex - 1] : null;
+
+const pattern = new RegExp("::[a-zA-Z0-9_]+{([^{}]*)}");
+const rawContentText = rawContent();
+const markdownText = removeMarkdown(rawContentText).replace(pattern, "");
+const ogp: Ogp = {
+  title: frontmatter.title,
+  description:
+    (markdownText.length <= 70 ? markdownText : markdownText.slice(0, 69)) +
+    "...",
+  thumbnail: getImageOrDefault(frontmatter.thumbnail),
+  url: url,
+  pageType: "article",
+};
 ---
 
 <html lang="ja">
-    <Head ogp={ogp} />
-    <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
-        <main class="flex-grow">
-            <Header />
-            <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
-                <div class="pt-28">
-                    <div class="grid grid-cols-1 justify-center">
-                        <div><img class="w-fit m-auto rounded-xl" src={getImageOrDefault(frontmatter.thumbnail)} alt="サムネイル"></div>
-                        {frontmatter.imageLicense && <div class="text-nord-1 text-[10px]">Image © {frontmatter.imageLicense.author} licensed under the <a class="text-nord-9 underline" href={frontmatter.imageLicense.link}>{frontmatter.imageLicense.license}</a>.</div>}
-                    </div>
-                </div>
-                <div class="mt-20 mb-5">
-                    <h1 class="md:text-4xl text-3xl font-black text-nord-2">{frontmatter.title}</h1>
-                </div>
-                <div class="my-2 flex gap-2">
-                    <span class="text-sm text-nord-3">{new Date(frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
-                    <span class="text-sm text-nord-3">{(rawContentText.length <= 1000 ? "1000文字以下" : ("約" + (rawContentText.length / 1000 | 0) * 1000) + "文字")}</span>
-                </div>
-                <div class="mb-10">
-                    {
-                        frontmatter.tags.map((tag) => <span class="inline-flex items-center rounded-xl bg-nord-4 mx-1 px-2 py-1 text-xs font-medium">{tag}</span>)
-                    }
-                </div>
-                <Toc headings={headings} />
-                <ContentLayout>
-                    <slot />
-                </div>
-                </ContentLayout>
+  <Head ogp={ogp} />
+  <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
+    <main class="flex-grow">
+      <Header />
+      <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
+        <div class="pt-28">
+          <div class="grid grid-cols-1 justify-center">
+            <div>
+              <img
+                class="w-fit m-auto rounded-xl"
+                src={getImageOrDefault(frontmatter.thumbnail)}
+                alt="サムネイル"
+              />
             </div>
-        </main>
-        <Footer />
-    </body>
+            {
+              frontmatter.imageLicense && (
+                <div class="text-nord-1 text-[10px]">
+                  Image © {frontmatter.imageLicense.author} licensed under the{" "}
+                  <a
+                    class="text-nord-9 underline"
+                    href={frontmatter.imageLicense.link}
+                  >
+                    {frontmatter.imageLicense.license}
+                  </a>
+                  .
+                </div>
+              )
+            }
+          </div>
+        </div>
+        <div class="mt-20 mb-5">
+          <h1 class="md:text-4xl text-3xl font-black text-nord-2">
+            {frontmatter.title}
+          </h1>
+        </div>
+        <div class="my-2 flex gap-2">
+          <span class="text-sm text-nord-3">
+            {new Date(frontmatter.pubDate).toLocaleDateString("ja-JP")}
+          </span>
+          <span class="text-sm text-nord-3"
+            >{(
+              rawContentText.length <= 1000
+                ? "1000文字以下"
+                : "約" + ((rawContentText.length / 1000) | 0) * 1000 + "文字"
+            )}</span>
+        </div>
+        <div class="mb-10">
+          {
+            frontmatter.tags.map((tag) => (
+              <a
+                href={"/tags/" + getSlugByTagName(tag)}
+                class="inline-flex items-center rounded-xl bg-white border border-nord-15 text-nord-15 hover:text-white hover:bg-nord-15 mx-1 px-2 py-1 text-xs font-medium"
+              >
+                #{tag}
+              </a>
+            ))
+          }
+        </div>
+        <Toc headings={headings} />
+        <ContentLayout>
+          <slot />
+
+          <div class="mt-20 border-t border-nord-6 pt-10">
+            <nav class="flex justify-between text-sm">
+              {
+                prevPost && (
+                  <a
+                    href={prevPost.url}
+                    class="flex flex-col gap-1 hover:text-nord-10"
+                  >
+                    <span class="text-nord-3">前の記事</span>
+                    <span class="font-medium">
+                      {prevPost.frontmatter.title}
+                    </span>
+                  </a>
+                )
+              }
+              {
+                !prevPost && (
+                  <div class="flex flex-col gap-1">
+                    <span class="text-nord-3">前の記事</span>
+                    <span class="font-medium">
+                      ないよ！この記事が最古参かも！？
+                    </span>
+                  </div>
+                )
+              }
+
+              {
+                nextPost && (
+                  <a
+                    href={nextPost.url}
+                    class="flex flex-col gap-1 text-right hover:text-nord-10"
+                  >
+                    <span class="text-nord-3">次の記事</span>
+                    <span class="font-medium">
+                      {nextPost.frontmatter.title}
+                    </span>
+                  </a>
+                )
+              }
+              {
+                !nextPost && (
+                  <div class="flex flex-col gap-1 text-right">
+                    <span class="text-nord-3">次の記事</span>
+                    <span class="font-medium">まだない！</span>
+                  </div>
+                )
+              }
+            </nav>
+          </div>
+        </ContentLayout>
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>

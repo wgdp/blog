@@ -1,0 +1,65 @@
+---
+import Head from '../../components/Head.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import type { Frontmatter } from '../../types/Frontmatter';
+import { getImageOrDefault } from '../../util/image';
+import type { Ogp } from '../../types/Ogp';
+import { DEFAULT_THUMBNAIL } from '../../util/const';
+import { getSlugByTagName, getNameByTagSlug, tagsData } from '../../util/tags';
+
+export async function getStaticPaths() {
+  return tagsData.map(tag => {
+    return { params: { tag: tag.slug }}
+  })
+}
+const { tag } = Astro.params;
+const { url } = Astro.props;
+const ogp:Ogp = {
+    title: "息絶えた雑記",
+    description: "Tag Posts",
+    thumbnail: DEFAULT_THUMBNAIL,
+    url: url,
+    pageType: "website"
+}
+
+const filteredPosts = (await Astro.glob<Frontmatter>('../posts/*.md'))
+  .filter(x => {
+    const tagSlugs = x.frontmatter.tags.map(x => getSlugByTagName(x))
+    return tagSlugs.includes(tag)
+  })
+  .sort((a, b) => {
+    const aDate = new Date(a.frontmatter.pubDate);
+    const bDate = new Date(b.frontmatter.pubDate);
+    return bDate.getTime() - aDate.getTime();
+});
+
+---
+
+<html lang="ja">
+    <Head ogp={ogp} />
+    <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
+        <Header />
+        <main class="container mx-auto flex-grow">
+            <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-lg">
+                <div class="flex justify-center my-28">
+                    <h1 class="text-7xl text-nord-1 font-normal">#{getNameByTagSlug(tag)}</h1>
+                </div>
+                <div class="text-xl grid md:grid-cols-2 gap-4 my-28 leading-relaxed">
+                    {filteredPosts.map((post) =>
+                        <a class="rounded-xl bg-white border border-nord-6 flex flex-col" href={post.url}>
+                            <img class="rounded-t-lg h-full" src={getImageOrDefault(post.frontmatter.thumbnail)} alt="サムネイル" />
+                            <div class="p-5 flex-grow">
+                                <h5 class="mb-2 text-nord-3 text-2xl font-bold tracking-tight">{post.frontmatter.title}</h5>
+                            </div>
+                            <div class="pb-2 pe-3 flex justify-center">
+                                <span class="text-sm text-nord-1">{new Date(post.frontmatter.pubDate).toLocaleDateString('ja-JP')}</span>
+                            </div>
+                        </a>
+                    )}
+                </div>
+            </div>
+        </main>
+        <Footer />
+	</body>
+</html>

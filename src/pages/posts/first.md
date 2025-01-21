@@ -3,7 +3,7 @@ layout: ../../layouts/BlogPostLayout.astro
 title: 'ブログを立ち上げた'
 pubDate: 2024-11-09
 description: 'ブロクを立ち上げて最初のまともな記事'
-tags: ["雑記"]
+tags: ["メモ"]
 ---
 
 ## ことのおこり
