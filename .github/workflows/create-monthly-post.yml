@@ -1,0 +1,52 @@
+name: Create Monthly Post
+
+on:
+  schedule:
+    - cron: "0 15 1 * *" # 毎月1日 JST 0:00 (UTC 15:00)
+  workflow_dispatch: # 手動実行用
+
+jobs:
+  create-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Create Monthly Post
+        run: |
+          # 日付計算
+          current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
+          last_month_date=$(TZ=Asia/Tokyo date -d "last month" '+%Y-%m')
+          last_month=$(TZ=Asia/Tokyo date -d "last month" '+%Y年%m月')
+
+          # 新しい記事ファイル名（前月の年月を使用）
+          new_post_path="src/pages/posts/${last_month_date}.md"
+
+          # テンプレートをコピー
+          cp templates/monthly-template.md "$new_post_path"
+
+          # プレースホルダーを置換
+          sed -i "s/{% pub-date %}/$current_date/g" "$new_post_path"
+          sed -i "s/{% month %}/$last_month/g" "$new_post_path"
+
+          echo "Created monthly post for $last_month at $new_post_path"
+
+          # Git設定
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+
+          # 変更をコミット
+          git add "$new_post_path"
+          git commit -m "📝 Add monthly post for $last_month"
+          git push
+
+      # - name: Send Discord Notification
+      #   env:
+      #     DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      #   run: |
+      #     last_month=$(TZ=Asia/Tokyo date -d "last month" '+%Y年%m月')
+      #     curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"🎉 $last_month の振り返り記事のテンプレートを作成しました！\"}" $DISCORD_WEBHOOK

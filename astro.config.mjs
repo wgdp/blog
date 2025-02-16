@@ -21,5 +21,8 @@ export default defineConfig({
        remarkEmbedYouTubePlugin,
        remarkEmbedCaptionImagePlugin,
     ],
+    shikiConfig: {
+      theme: 'rose-pine-dawn'
+    },
   }
 });
