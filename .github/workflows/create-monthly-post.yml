@@ -46,9 +46,15 @@ jobs:
           git commit -m "📝 Add monthly post for $last_month"
           git push
 
-      - name: Send Discord Notification
+      - name: Send Discord notification
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          last_month=$(TZ=Asia/Tokyo date -d "last month" '+%Y年%m月')
-          curl -H "Content-Type: application/json" -X POST -d "{\"content\":\"🎉 $last_month の振り返り記事のテンプレートを作成しました！\"}" $DISCORD_WEBHOOK
+          curl -H "Content-Type: application/json" -X POST -d '{
+            "content": "<@whigdrap> 月初めだ！急いで今月の記事を書くんだ！\n遅れると大変なことになるぞ！！",
+            "embeds": [{
+              "image": {
+                "url": "https://image.r2.cloudflare.wgdp.dev/imasuguyare.webp"
+              }
+            }]
+          }' $DISCORD_WEBHOOK
