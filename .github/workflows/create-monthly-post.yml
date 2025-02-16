@@ -51,7 +51,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           curl -H "Content-Type: application/json" -X POST -d '{
-            "content": "<@!${{ secrets.DISCORD_USER_ID }}> 月初めだ！急いで今月の記事を書くんだ！\n今すぐやれ！！",
+            "content": "<@!${{ secrets.DISCORD_USER_ID }}> 月初めだ！急いで先月の振り返りを書くんだ！\nいますぐやれ！！",
             "embeds": [{
               "image": {
                 "url": "https://image.r2.cloudflare.wgdp.dev/imasuguyare.webp"
