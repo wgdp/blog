@@ -23,7 +23,7 @@ jobs:
           # 日付計算
           current_date=$(TZ=Asia/Tokyo date '+%Y-%m-%d')
           last_month_date=$(TZ=Asia/Tokyo date -d "last month" '+%Y-%m')
-          last_month=$(TZ=Asia/Tokyo date -d "last month" '+%Y年%m月')
+          last_month=$(TZ=Asia/Tokyo date -d "last month" '+%Y年%-m月')
 
           # 新しい記事ファイル名（前月の年月を使用）
           new_post_path="src/pages/posts/${last_month_date}.md"
