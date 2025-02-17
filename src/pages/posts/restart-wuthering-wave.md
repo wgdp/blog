@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
 title: "鳴潮を真面目に始めた"
-pubDate: 2025-1-27
+pubDate: 2025-2-14
 description: "めいちょーのハナシ"
 tags: ["ゲーム"]
 thumbnail: "roccla-copying.webp"
