@@ -4,6 +4,7 @@ export const tagsData = [
     {name: "振り返り", slug: "reflection"},
     {name: "メモ", slug: "memo"},
     {name: "ゲーム", slug: "game"},
+    {name: "映画", slug: "movie"},
     {name: "感想", slug: "impression"},
     // {name: "食", slug: "food"},
 ]
