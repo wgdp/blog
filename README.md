@@ -1,6 +1,6 @@
 # Blog
 
-[ブログ](https://wgdp.dev)
+[ブログ](https://blog.wgdp.dev)
 
 ## 運用方法
 

@@ -1,8 +1,8 @@
 ---
 layout: ../../layouts/BlogPostLayout.astro
-title: 'ブログ盆栽Part.1'
+title: "ブログ盆栽Part.1"
 pubDate: 2025-1-22
-description: 'ブログの技術的なメモ'
+description: "ブログの技術的なメモ"
 tags: ["技術", "メモ"]
 thumbnail: "bonsai.png"
 ---
@@ -81,7 +81,7 @@ UIは全部自作した。
 ベースの色に関しては、Nordを採用している。
 Nordに関しては以下の記事に書いている。
 
-::linkcard{urls="https://wgdp.dev/posts/blog-color"}
+::linkcard{urls="https://blog.wgdp.dev/posts/blog-color"}
 
 ### コンポーネント
 
@@ -93,7 +93,7 @@ Nordに関しては以下の記事に書いている。
 
 例えば以下のようなもの。
 
-::linkcard{urls="https://wgdp.dev"}
+::linkcard{urls="https://blog.wgdp.dev"}
 
 記事内で利用しているものはremarkのプラグインとして実装していて、Markdown変換時に以下のような構文を解析してHTMLに変換している。
 

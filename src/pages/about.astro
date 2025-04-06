@@ -1,77 +1,47 @@
 ---
-import Head from '../components/Head.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import LinkCard from '../components/LinkCard.astro';
-import ContentLayout from '../layouts/ContentLayout.astro';
-import CaptionImage from '../components/CaptionImage.astro';
-import type { Ogp } from '../types/Ogp';
-import { DEFAULT_THUMBNAIL } from '../util/const';
-import { makeImageUrl } from '../util/image';
+import Head from "../components/Head.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import LinkCard from "../components/LinkCard.astro";
+import ContentLayout from "../layouts/ContentLayout.astro";
+import CaptionImage from "../components/CaptionImage.astro";
+import type { Ogp } from "../types/Ogp";
+import { DEFAULT_THUMBNAIL } from "../util/const";
+import { makeImageUrl } from "../util/image";
 
 const { url } = Astro.props;
-const ogp:Ogp = {
-    title: "息絶えた雑記",
-    description: "息絶えた雑記 About",
-    thumbnail: DEFAULT_THUMBNAIL,
-    url: url,
-    pageType: "website"
-}
+const ogp: Ogp = {
+  title: "息絶えた雑記",
+  description: "息絶えた雑記 About",
+  thumbnail: DEFAULT_THUMBNAIL,
+  url: url,
+  pageType: "website",
+};
 ---
 
 <html lang="ja">
-    <Head ogp={ogp} />
-    <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
-        <Header />
-        <main class="container mx-auto flex-grow">
-            <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
-                <div class="flex justify-center mt-32">
-                    <h1 class="text-7xl text-nord-1 font-normal">About</h1>
-                </div>
-                <div class="mb-20">
-                    <img src={makeImageUrl("yadon-and-clab.png")} alt="現在使っているアイコン" class="mt-10 mb-5 h-40 w-40 mx-auto rounded-xl">
-                </div>
-                <ContentLayout>
-                    <h2>はじめに</h2>
-                    <p>こんにちは。うぃどらと申します。</p>
-                    <p>私は現在ゲーム会社で働いているソフトウェアエンジニアです。</p>
-
-                    <h4 class="text-2xl">経歴</h4>
-                </ContentLayout>
-                <div class="mt-10">
-                    <ol class="relative border-s border-nord-3">                  
-                        <li class="mb-10 ms-4">
-                            <div class="absolute w-3 h-3 bg-nord-3 rounded-full mt-1.5 -start-1.5"></div>
-                            <time class="mb-1 text-sm font-normal leading-none text-nord-1">2022年 4月 ～ 現在</time>
-                            <h3 class="text-md font-semibold text-nord-3 mb-1">ソーシャルゲーム会社</h3>
-                        </li>
-                        <li class="mb-10 ms-4">
-                            <div class="absolute w-3 h-3 bg-nord-3 rounded-full mt-1.5 -start-1.5"></div>
-                            <time class="mb-1 text-sm font-normal leading-none text-nord-1">2019年 8月 ～ 2021年 12月</time>
-                            <h3 class="text-md font-semibold text-nord-3 mb-1">EdTech系Webサービス会社</h3>
-                        </li>
-                    </ol>
-                </div>
-                <ContentLayout>
-                    <h2>このブログについて</h2>
-                    <p>このブログを作成した意図としては、以下の記事を見て貰えればと思います。</p>
-                    <LinkCard url="https://wgdp.dev/posts/first" />
-                </ContentLayout>
-                <ContentLayout>
-                    <h2>趣味</h2>
-                    <p>ゲームで遊ぶのが好きです。</p>
-                    <p>話題のゲームで遊んだり、Steamやゲームメディアをウォッチして面白そうな新作ゲーム（インディー, AAA問わず）を発掘したりしています。</p>
-
-                    <LinkCard url="https://steamcommunity.com/id/46498888" />
-
-                    <p>おそらく最もプレイ時間が長いゲームはMinecraftです。
-                    主に建築や工業Modなどで遊んでいます。</p>
-
-                    
-                    <CaptionImage src="about-minecraft-house.png" alt="Minecraftで建築した家の例" />
-                </ContentLayout>
-            </div>
-        </main>
-        <Footer />
-	</body>
+  <Head ogp={ogp} />
+  <body class="antialiased bg-white text-nord-0 flex flex-col min-h-screen">
+    <Header />
+    <main class="container mx-auto flex-grow">
+      <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
+        <div class="flex justify-center mt-32">
+          <h1 class="text-7xl text-nord-1 font-normal">About</h1>
+        </div>
+        <ContentLayout>
+          <h2>このブログについて</h2>
+          <p>
+            このブログはうぃどらの月の振り返りやゲームの感想、技術記事などを投稿する場所です。
+          </p>
+          <p>
+            このブログを作成した意図としては、以下の記事を見て貰えればと思います。
+          </p>
+          <LinkCard url="https://blog.wgdp.dev/posts/first" />
+          <p>また、うぃどらのことについては以下のプロフィールに記載しています。</p>
+          <LinkCard url="https://profile.wgdp.dev" />
+        </ContentLayout>
+      </div>
+    </main>
+    <Footer />
+  </body>
 </html>
