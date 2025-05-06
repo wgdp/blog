@@ -99,7 +99,7 @@ Nordに関しては以下の記事に書いている。
 
 ```markdown
 // リンクカード
-::linkcard{urls="https//wgdp.dev"}
+::linkcard{urls="https//blog.wgdp.dev"}
 ```
 
 #### キャプション付きの画像
