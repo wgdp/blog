@@ -1,0 +1,4 @@
+@import "tailwindcss";
+
+@plugin "tailwind-nord";
+@plugin "@tailwindcss/typography";
