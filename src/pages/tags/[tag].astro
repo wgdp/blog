@@ -3,7 +3,7 @@ import "../../styles/global.css"
 import Head from '../../components/Head.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
-import type { Frontmatter } from '../../types/Frontmatter';
+import type { Props } from '../../types/Props';
 import { getImageOrDefault } from '../../util/image';
 import type { Ogp } from '../../types/Ogp';
 import { DEFAULT_THUMBNAIL } from '../../util/const';
@@ -24,12 +24,13 @@ const ogp:Ogp = {
     pageType: "website"
 }
 
-const filteredPosts = (await Astro.glob<Frontmatter>('../posts/*.md'))
-  .filter(x => {
+const filteredPosts = Object.values(import.meta.glob("../posts/*.md", { eager: true}))
+.map(x => x as Props)
+.filter(x => {
     const tagSlugs = x.frontmatter.tags.map(x => getSlugByTagName(x))
     return tagSlugs.includes(tag)
-  })
-  .sort((a, b) => {
+})
+.sort((a, b) => {
     const aDate = new Date(a.frontmatter.pubDate);
     const bDate = new Date(b.frontmatter.pubDate);
     return bDate.getTime() - aDate.getTime();

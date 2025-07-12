@@ -9,8 +9,11 @@ async function getOpenGraphData(url: string) {
   try {
     const { result } = await ogs(options);
     return result;
-  } catch (error) {
-    console.error("Error fetching Open Graph Data:", error);
+  } catch (error: any) {
+    // 404エラーの場合簡素なエラーメッセージを出すだけにする
+    if (error.result.error === "404 Not Found") {
+      console.warn('linkcard is', error.result.error, '=>', error.result.requestUrl)
+    }
     return {};
   }
 }
