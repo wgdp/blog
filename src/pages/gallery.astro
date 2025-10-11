@@ -9,10 +9,10 @@ import { UIDOLA_THUMBNAIL } from '../util/const';
 const { url } = Astro.props;
 const ogp:Ogp = {
     title: "息絶えた雑記",
-    description: "404",
+    description: "息絶えた雑記 Gallery",
     thumbnail: UIDOLA_THUMBNAIL,
     url: url,
-    pageType: "article"
+    pageType: "website"
 }
 ---
 
@@ -22,11 +22,11 @@ const ogp:Ogp = {
     <Header />
     <main class="container mx-auto flex-grow">
       <div class="mx-auto w-full px-6 xs:px-7 sm:px-10 max-w-screen-md">
-        <div class="flex justify-center my-40">
-          <h1 class="text-7xl text-nord-1 font-normal">404</h1>
+        <div class="flex justify-center mt-32">
+          <h1 class="text-7xl text-nord-1 font-normal">Gallery</h1>
         </div>
         <div class="text-4xl flex flex-col justify-center my-28 leading-relaxed">
-          <p class="mx-auto">Oops... ページが見つかりません...</p>
+          <p class="mx-auto">このページは準備中です</p>
         </div>
       </div>
     </main>

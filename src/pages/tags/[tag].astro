@@ -6,7 +6,7 @@ import Footer from '../../components/Footer.astro';
 import type { Props } from '../../types/Props';
 import { getImageOrDefault } from '../../util/image';
 import type { Ogp } from '../../types/Ogp';
-import { DEFAULT_THUMBNAIL } from '../../util/const';
+import { UIDOLA_THUMBNAIL } from '../../util/const';
 import { getSlugByTagName, getNameByTagSlug, tagsData } from '../../util/tags';
 
 export async function getStaticPaths() {
@@ -19,7 +19,7 @@ const { url } = Astro.props;
 const ogp:Ogp = {
     title: "息絶えた雑記",
     description: "息絶えた雑記 Tag Posts",
-    thumbnail: DEFAULT_THUMBNAIL,
+    thumbnail: UIDOLA_THUMBNAIL,
     url: url,
     pageType: "website"
 }

@@ -6,5 +6,6 @@ export interface Frontmatter {
     description: string
     tags: string[]
     thumbnail: string
+    alt: string
     imageLicense: ImageLicense
 }
