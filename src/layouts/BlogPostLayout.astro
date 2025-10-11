@@ -71,6 +71,13 @@ const ogp: Ogp = {
                 </div>
               )
             }
+            {
+              frontmatter.alt && (
+                <div class="text-nord-1 text-[12px]">
+                  {frontmatter.alt}
+                </div>
+              )
+            }
           </div>
         </div>
         <div class="mt-20 mb-5">
@@ -79,15 +86,17 @@ const ogp: Ogp = {
           </h1>
         </div>
         <div class="my-2 flex gap-2">
-          <span class="text-sm text-nord-3">
+          <span class="text-sm text-nord-10 flex gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M9 10v2H7v-2zm4 0v2h-2v-2zm4 0v2h-2v-2zm2-7a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h1V1h2v2h8V1h2v2zm0 16V8H5v11zM9 14v2H7v-2zm4 0v2h-2v-2zm4 0v2h-2v-2z"/></svg>
             {new Date(frontmatter.pubDate).toLocaleDateString("ja-JP")}
           </span>
-          <span class="text-sm text-nord-3"
-            >{(
-              rawContentText.length <= 1000
-                ? "1000文字以下"
-                : "約" + ((rawContentText.length / 1000) | 0) * 1000 + "文字"
-            )}</span>
+          <span class="text-sm text-nord-10">|</span>
+          <span class="text-sm text-nord-10 flex gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20a7 7 0 0 1-7-7a7 7 0 0 1 7-7a7 7 0 0 1 7 7a7 7 0 0 1-7 7m7.03-12.61l1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0-9 9a9 9 0 0 0 9 9c5 0 9-4.03 9-9c0-2.12-.74-4.07-1.97-5.61M11 14h2V8h-2m4-7H9v2h6z"/></svg>
+            {(
+             "" + Math.ceil(rawContentText.length / 500) + " mins read"
+            )}
+          </span>
         </div>
         <div class="mb-10">
           {

@@ -5,16 +5,14 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import LinkCard from "../components/LinkCard.astro";
 import ContentLayout from "../layouts/ContentLayout.astro";
-import CaptionImage from "../components/CaptionImage.astro";
 import type { Ogp } from "../types/Ogp";
-import { DEFAULT_THUMBNAIL } from "../util/const";
-import { makeImageUrl } from "../util/image";
+import { UIDOLA_THUMBNAIL } from "../util/const";
 
 const { url } = Astro.props;
 const ogp: Ogp = {
   title: "息絶えた雑記",
   description: "息絶えた雑記 About",
-  thumbnail: DEFAULT_THUMBNAIL,
+  thumbnail: UIDOLA_THUMBNAIL,
   url: url,
   pageType: "website",
 };
@@ -32,13 +30,13 @@ const ogp: Ogp = {
         <ContentLayout>
           <h2>このブログについて</h2>
           <p>
-            このブログはうぃどらの月の振り返りやゲームの感想、技術記事などを投稿する場所です。
+            このブログはuidolaの月の振り返りやゲームの感想、技術記事などを投稿する場所です。
           </p>
           <p>
             このブログを作成した意図としては、以下の記事を見て貰えればと思います。
           </p>
           <LinkCard url="https://blog.wgdp.dev/posts/first" />
-          <p>また、うぃどらのことについては以下のプロフィールに記載しています。</p>
+          <p>また、uidolaのことについては以下のプロフィールに記載しています。</p>
           <LinkCard url="https://profile.wgdp.dev" />
         </ContentLayout>
       </div>
