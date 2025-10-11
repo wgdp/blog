@@ -5,7 +5,7 @@ import type { LeafDirective } from "mdast-util-directive";
 import { DESCRIPTION_LIMIT_LENGTH } from "../util/const";
 
 async function getOpenGraphData(url: string) {
-  const options = { url };
+  const options = { url, timeout: 60 };
   try {
     const { result } = await ogs(options);
     return result;
