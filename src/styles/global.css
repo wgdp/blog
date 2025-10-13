@@ -2,3 +2,7 @@
 
 @plugin "tailwind-nord";
 @plugin "@tailwindcss/typography";
+
+body {
+  font-family: 'sans-serif';
+}
