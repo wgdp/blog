@@ -1,22 +1,9 @@
 import { visit } from "unist-util-visit";
 import type { Root } from "mdast";
-import ogs from "open-graph-scraper";
 import type { LeafDirective } from "mdast-util-directive";
-import { DESCRIPTION_LIMIT_LENGTH } from "../util/const";
+import { getOpenGraphData } from "../util/ogp";
+import { NOIMAGE } from "../util/const"
 
-async function getOpenGraphData(url: string) {
-  const options = { url, timeout: 60 };
-  try {
-    const { result } = await ogs(options);
-    return result;
-  } catch (error: any) {
-    // 404エラーの場合簡素なエラーメッセージを出すだけにする
-    if (error.result.error === "404 Not Found") {
-      console.warn('linkcard is', error.result.error, '=>', error.result.requestUrl)
-    }
-    return {};
-  }
-}
 
 function getAmazonImageUrl(url: URL) {
   const slug = url.pathname.split("/").slice(-1)[0]
@@ -39,7 +26,10 @@ async function visitor(node: LeafDirective) {
     const url = new URL(preParseUrl)
     const websiteData = await getOpenGraphData(url.href);
     let ogImage =
-      node.attributes?.image || websiteData?.ogImage?.[0]?.url || null;
+      node.attributes?.image || websiteData?.ogImage?.[0]?.url || websiteData?.favicon;
+    if (!ogImage || !URL.canParse(ogImage)) {
+      ogImage = NOIMAGE
+    }
     const ogTitle =
       node.attributes?.title ||
       websiteData?.ogTitle ||
