@@ -1,5 +1,6 @@
 ---
 import ogs from 'open-graph-scraper'
+import { NOIMAGE } from '../util/const'
 
 interface Props {
   url: string
@@ -27,7 +28,10 @@ async function getOpenGraphData(url: string) {
 
 const origin = new URL(url).origin;
 const websiteData = await getOpenGraphData(url);
-const ogImage = image || websiteData?.ogImage?.[0]?.url || null
+let ogImage = image || websiteData?.ogImage?.[0]?.url || websiteData?.favicon;
+if (!ogImage || !URL.canParse(ogImage)) {
+  ogImage = NOIMAGE
+}
 const ogTitle = title || websiteData?.ogTitle || 'タイトルの取得に失敗しました'
 const ogDescription = description || websiteData?.ogDescription || ''
 ---
