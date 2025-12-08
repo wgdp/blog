@@ -102,7 +102,7 @@ async function visitor(node: LeafDirective) {
                 type: "element",
                 tagName: "div",
                 properties: {
-                  class: ["flex", "flex-col", "py-2"],
+                  class: ["flex", "flex-col", "py-2", "min-w-0"],
                 },
                 children: [
                   {
